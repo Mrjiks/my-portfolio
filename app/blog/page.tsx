@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const getData = async () => {
+export const getData = async (url) => {
   const data = await fetch("https://www.reddit.com/.json");
 
   return data.json();
@@ -38,3 +38,12 @@ const Posts = async () => {
 };
 
 export default Posts;
+
+// Get params for dynamic pages
+export async function generateStaticParams() {
+  const { data } = await getData();
+
+  const workingData = data.children?.map((data) => data?.data.title);
+
+  return workingData;
+}

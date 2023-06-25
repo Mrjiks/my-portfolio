@@ -1,6 +1,6 @@
-import Link from "next/link";
+"use client";
 import React from "react";
-import clsx from "clsx";
+import PageLinks from "./PageLinks";
 
 export const links = [
   { id: 1, href: "/", name: "Home" },
@@ -8,25 +8,16 @@ export const links = [
   { id: 3, href: "/about", name: "About" },
 ];
 
-const isActive = links.map((link) => link.href);
 const NavBar = () => {
   return (
-    <nav className='flex container mx-auto justify-between py-3'>
+    <nav className='container flex items-center justify-between sticky top-0 px-4 py-3 mx-auto bg-[#374151] mb-10'>
       <div>
         <h1 className='text-2xl'>Reddit</h1>
       </div>
-      <div className='justify-around flex gap'>
-        {links.map((link) => {
-          return (
-            <>
-              <ul className='justify-around flex gap-2 mx-3'>
-                <Link href={link.href} key={link.id} className={clsx("text-teal-400")}>
-                  {link.name}
-                </Link>
-              </ul>
-            </>
-          );
-        })}
+      <div className='flex justify-around gap '>
+        {links.map((link) => (
+          <PageLinks key={link.id} href={link.href} name={link.name} />
+        ))}
       </div>
     </nav>
   );

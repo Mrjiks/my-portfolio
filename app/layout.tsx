@@ -22,8 +22,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' className={ubuntu.className}>
-      <body className='container mx-auto justify-between items-center min-h-screen w-full'>
+    <html lang='en' className={poppins.className}>
+      <body className='container items-center justify-between w-full min-h-screen mx-auto'>
         <NavBar />
         {children}
       </body>
